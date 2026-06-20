@@ -12,7 +12,13 @@ public class User {
 
     private String username;
 
+    private String email;
+
     private String password;
+
+    private String resetToken;
+
+    private Long tokenExpiry;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -33,12 +39,36 @@ public class User {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public Long getTokenExpiry() {
+        return tokenExpiry;
+    }
+
+    public void setTokenExpiry(Long tokenExpiry) {
+        this.tokenExpiry = tokenExpiry;
     }
 
     public Role getRole() {

@@ -28,20 +28,19 @@ public class UserController {
     public User register(@RequestBody User user) {
 
         user.setPassword(encoder.encode(user.getPassword()));
-
-        user.setRole(Role.USER); // default role
+        user.setRole(Role.USER);
 
         return service.register(user);
     }
 
-    // LOGIN (JWT TOKEN RETURN)
+    // LOGIN
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest request) {
 
         User user = service.login(request.getUsername());
 
         if (user != null &&
-            encoder.matches(request.getPassword(), user.getPassword())) {
+                encoder.matches(request.getPassword(), user.getPassword())) {
 
             return jwtUtil.generateToken(user.getUsername());
         }
@@ -49,7 +48,23 @@ public class UserController {
         return "Invalid username or password";
     }
 
-    // TEST ENDPOINT
+    // FORGOT PASSWORD
+    @PostMapping("/forgot-password")
+    public String forgotPassword(@RequestParam String email) {
+
+        return service.forgotPassword(email);
+    }
+
+    // RESET PASSWORD
+    @PostMapping("/reset-password")
+    public String resetPassword(
+            @RequestParam String token,
+            @RequestParam String password) {
+
+        return service.resetPassword(token, password);
+    }
+
+    // TEST
     @GetMapping("/test")
     public String test() {
         return "Auth Controller Working";
