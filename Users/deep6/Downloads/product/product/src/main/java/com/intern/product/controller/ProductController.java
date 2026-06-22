@@ -38,4 +38,17 @@ public class ProductController {
                               @RequestParam int size) {
         return service.pagination(page, size);
     }
+    @GetMapping("/pagination")
+public Page<Product> pagination(
+        @RequestParam int page,
+        @RequestParam int size) {
+
+    return service.pagination(page, size);
+        }
+        @GetMapping("/sort")
+public List<Product> sortProducts(
+        @RequestParam String field) {
+
+    return service.sortProducts(field);
+}
 }

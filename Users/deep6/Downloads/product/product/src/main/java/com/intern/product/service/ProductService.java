@@ -1,12 +1,13 @@
 package com.intern.product.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Sort;
 import com.intern.product.entity.Category;
 import com.intern.product.entity.Product;
 import com.intern.product.repository.CategoryRepository;
@@ -43,4 +44,7 @@ public class ProductService {
     public Page<Product> pagination(int page, int size) {
         return repo.findAll(PageRequest.of(page, size));
     }
+    public List<Product> sortProducts(String field) {
+    return repo.findAll(Sort.by(field));
+}
 }

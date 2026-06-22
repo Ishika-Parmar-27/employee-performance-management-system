@@ -74,4 +74,5 @@ public class UserService {
 
         return "Password updated successfully";
     }
+    
 }
