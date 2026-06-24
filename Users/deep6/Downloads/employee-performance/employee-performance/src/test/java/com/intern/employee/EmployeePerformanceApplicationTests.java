@@ -1,4 +1,4 @@
-package com.intern.employee_performance;
+package com.intern.employee;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
